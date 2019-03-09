@@ -36,7 +36,7 @@ class Bar_LoungeTest < MiniTest::Test
 
   def test_guests_in_karaoke_room
     @bar_lounge.guests_in_karaoke_room(@rooms)
-    assert_equal(9, @bar_lounge.k_rooms.count)
+    assert_equal(9, @bar_lounge.k_rooms.room1.karaoke_room.count)
   end
 
 

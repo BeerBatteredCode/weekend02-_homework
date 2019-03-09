@@ -1,17 +1,11 @@
 class Guests
 
- def initialize(name, space, cash, song)
+ def initialize(name)
    @name = name
-   @space = space
-   @cash = cash
-   @song = song
  end
 
- def guest_details
+ def check_guest_name
    @name
-   @space
-   @cash
-   @song
  end
 
 end

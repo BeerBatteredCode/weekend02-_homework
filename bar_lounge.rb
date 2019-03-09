@@ -19,7 +19,7 @@ attr_reader :till, :lounge, :k_rooms
  def guests_in_karaoke_room(rooms)
    (@k_rooms << rooms).flatten!
       @k_rooms.each do |check|
-        
+
 
 
  end

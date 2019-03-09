@@ -1,19 +1,38 @@
 class Room
 
-attr_reader :space, :karaoke_room, :playlist
+attr_reader :k_room, :songs
 
- def initialize(space)
-   @space = space
-   @karaoke_room = []
-   @playlist = []
+ def initialize()
+   @k_room = []
+   @songs = []
  end
 
- def songs_in_playlist(songs)
-   (@playlist << songs).flatten!
+
+
+
+ def add_songs_to_playlist(songs)
+   (@songs << songs).flatten!
  end
 
- def guests_in_karaoke_room(guests1)
-   @karaoke_room << guests1
+ def add_tune_to_playlist(songs)
+   (@songs << songs).flatten!
  end
 
+ def add_guest_to_room(guest)
+   @k_room << guest
+ end
+
+ def add_group_to_room(group)
+   (@k_room << group).flatten!
+ end
+
+ def remove_guest_from_room(guest)
+   @k_room.delete(guest)
+ end
+
+ def mvp_requirement(group, guest, songs)
+   add_group_to_room(group)
+   add_songs_to_playlist(songs)
+   remove_guest_from_room(guest)
+ end
 end
