@@ -33,21 +33,26 @@ class EntranceTest < MiniTest::Test
   end
 
   def test_sell_entry
-    @entrance1.sell_entry(@guest1)
-    @entrance1.sell_entry(@guest2)
-    @entrance1.sell_entry(@guest3)
-    @entrance1.sell_entry(@guest4)
-    @entrance1.sell_entry(@guest5)
-    @entrance1.sell_entry(@guest6)
+    @entrance1.sell_entry(@guest1, @room1)
+    @entrance1.sell_entry(@guest2, @room1)
+    @entrance1.sell_entry(@guest3, @room1)
+    @entrance1.sell_entry(@guest4, @room1)
+    @entrance1.sell_entry(@guest5, @room1)
+    @entrance1.sell_entry(@guest6, @room1)
     assert_equal(2200, @entrance1.till())
+    assert_equal(4, @room1.k_room.count())
   end
 
   def test_access_to_karaoke_or_bar
-    @entrance1.access_to_karaoke_or_bar(@guest1)
-    assert_equal(true, @entrance1.guest_has_money())
-    assert_equal(true, @entrance1.enough_space_for_guest?())
-    assert_equal(2050, @entrance1.till())
+    @entrance1.access_to_karaoke_or_bar(@guest1, @room1)
+    @entrance1.access_to_karaoke_or_bar(@guest2, @room1)
+    @entrance1.access_to_karaoke_or_bar(@guest3, @room1)
+    @entrance1.access_to_karaoke_or_bar(@guest4, @room1)
+    @entrance1.access_to_karaoke_or_bar(@guest5, @room1)
+    @entrance1.access_to_karaoke_or_bar(@guest6, @room1)
+    assert_equal(2150, @entrance1.till())
+    assert_equal(3, @entrance1.bar.count)
+    assert_equal(3, @room1.k_room.count)
   end
-
 
 end

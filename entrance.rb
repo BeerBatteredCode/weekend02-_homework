@@ -17,15 +17,16 @@ class Entrance
       @bar << guest
     end
 
-    def sell_entry(guest)
+    def sell_entry(guest, room)
       if guest_has_money?(guest)
         @till += @charge
+        room.add_guest_to_room(guest)
       end
     end
 
-    def access_to_karaoke_or_bar(guest)
-      if (guest_has_money?(guest) && enough_space_for_guest?(guest))
-        sell_entry(guest)
+    def access_to_karaoke_or_bar(guest, room)
+      if (guest_has_money?(guest) && room.enough_space_for_guest?(guest))
+        sell_entry(guest, room)
       else
         divert_guest_to_bar(guest)
       end

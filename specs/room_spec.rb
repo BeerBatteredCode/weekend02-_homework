@@ -26,12 +26,12 @@ class RoomTest < MiniTest::Test
 
   def test_add_songs_to_playlist
     @room1.add_songs_to_playlist(@songs)
-    assert_equal(5, @room1.songs.count)
+    assert_equal(5, @room1.playlist.count)
   end
 
   def test_add_tune_to_playlist
     @room1.add_tune_to_playlist(@song1)
-    assert_equal(1, @room1.songs.count)
+    assert_equal(1, @room1.playlist.count)
   end
 
   def test_add_group_to_room
@@ -49,10 +49,10 @@ class RoomTest < MiniTest::Test
     assert_equal(0, @room1.k_room.count)
   end
 
-  def test_mvp_requirement
-    @room1.mvp_requirement(@group, @guest1, @songs)
+  def test_set_up_room_for_group
+    @room1.set_up_room_for_group(@group, @guest1, @songs)
     assert_equal(2, @room1.k_room.count)
-    assert_equal(5, @room1.songs.count)
+    assert_equal(5, @room1.playlist.count)
   end
 
   def test_enough_space_for_guest?
@@ -62,5 +62,9 @@ class RoomTest < MiniTest::Test
     assert_equal(false, @room1.enough_space_for_guest?(@guest4))
   end
 
-
+  # def test_check_for_favourite_song
+  #   @room1.check_for_favourite_song(@guest1, @songs)
+  #   assert_equal(5, @room1.playlist.count)
+  #   assert_equal(true, @room1.check_for_favourite_song(@guest1, @songs))
+  # end
 end
