@@ -7,9 +7,6 @@ attr_reader :k_room, :songs
    @songs = []
  end
 
-
-
-
  def add_songs_to_playlist(songs)
    (@songs << songs).flatten!
  end
@@ -36,4 +33,9 @@ attr_reader :k_room, :songs
    add_songs_to_playlist(songs)
    remove_guest_from_room(guest)
  end
+
+
+
+
+
 end

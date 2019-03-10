@@ -1,5 +1,6 @@
 require('minitest/autorun')
 require('minitest/rg')
+require_relative('../entrance.rb')
 require_relative('../room.rb')
 require_relative('../guests.rb')
 require_relative('../song.rb')
@@ -9,10 +10,10 @@ class RoomTest < MiniTest::Test
   def setup
     @room1 = Room.new()
 
-    @guest1 = Guests.new("E29 Karaoke Night")
-    @guest2 = Guests.new("E28 Lame Karaoke Night")
-    @guest3 = Guests.new("E27 Silent Prayer Night")
-    @guest4 = Guests.new("E27 Silent Prayer Night")
+    @guest1 = Guests.new("E29 Karaoke Night", 100)
+    @guest2 = Guests.new("E28 Lame Karaoke Night", 50)
+    @guest3 = Guests.new("E27 Silent Prayer Night", 70)
+    @guest4 = Guests.new("E30 Gettin' Hazed by E29", 40)
     @group = [@guest1, @guest2, @guest3]
 
     @song1 = Song.new("Perfect Tonight")
@@ -53,4 +54,5 @@ class RoomTest < MiniTest::Test
     assert_equal(2, @room1.k_room.count)
     assert_equal(5, @room1.songs.count)
   end
+
 end
