@@ -2,7 +2,7 @@ require('minitest/autorun')
 require('minitest/rg')
 require_relative('../entrance.rb')
 require_relative('../room.rb')
-require_relative('../guests.rb')
+require_relative('../guest.rb')
 require_relative('../song.rb')
 
 class SongTest < MiniTest::Test

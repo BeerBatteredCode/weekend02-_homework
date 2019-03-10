@@ -1,8 +1,9 @@
 class Room
 
-attr_reader :k_room, :songs
+attr_reader :k_room, :songs, :space
 
- def initialize()
+ def initialize(space)
+   @space = space
    @k_room = []
    @songs = []
  end
@@ -34,8 +35,9 @@ attr_reader :k_room, :songs
    remove_guest_from_room(guest)
  end
 
-
-
+ def enough_space_for_guest?(guest)
+   return space >= guest.size
+ end
 
 
 end

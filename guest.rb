@@ -1,11 +1,12 @@
-class Guests
+class Guest
 
-attr_reader :guests, :cash
-attr_writer :guests, :cash
+attr_reader :guest, :cash, :size
+attr_writer :guest, :cash
 
-  def initialize(name, cash)
+  def initialize(name, cash, size)
     @name = name
     @cash = cash
+    @size = size
   end
 
   def check_guest_name

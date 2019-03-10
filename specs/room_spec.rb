@@ -2,18 +2,18 @@ require('minitest/autorun')
 require('minitest/rg')
 require_relative('../entrance.rb')
 require_relative('../room.rb')
-require_relative('../guests.rb')
+require_relative('../guest.rb')
 require_relative('../song.rb')
 
 class RoomTest < MiniTest::Test
 
   def setup
-    @room1 = Room.new()
+    @room1 = Room.new(35)
 
-    @guest1 = Guests.new("E29 Karaoke Night", 100)
-    @guest2 = Guests.new("E28 Lame Karaoke Night", 50)
-    @guest3 = Guests.new("E27 Silent Prayer Night", 70)
-    @guest4 = Guests.new("E30 Gettin' Hazed by E29", 40)
+    @guest1 = Guest.new("E29 Karaoke Night", 100, 31)
+    @guest2 = Guest.new("E28 Lame Karaoke Night", 50, 27)
+    @guest3 = Guest.new("E27 Silent Prayer Night", 70, 25)
+    @guest4 = Guest.new("E30 Gettin' Hazed by E29", 40, 36)
     @group = [@guest1, @guest2, @guest3]
 
     @song1 = Song.new("Perfect Tonight")
@@ -40,7 +40,7 @@ class RoomTest < MiniTest::Test
   end
 
   def test_add_guest_to_room
-    @room1.add_guest_to_room(@guests1)
+    @room1.add_guest_to_room(@guest1)
     assert_equal(1, @room1.k_room.count)
   end
 
@@ -54,5 +54,13 @@ class RoomTest < MiniTest::Test
     assert_equal(2, @room1.k_room.count)
     assert_equal(5, @room1.songs.count)
   end
+
+  def test_enough_space_for_guest?
+    @room1.enough_space_for_guest?(@guest1)
+    @room1.enough_space_for_guest?(@guest4)
+    assert_equal(true, @room1.enough_space_for_guest?(@guest1))
+    assert_equal(false, @room1.enough_space_for_guest?(@guest4))
+  end
+
 
 end
