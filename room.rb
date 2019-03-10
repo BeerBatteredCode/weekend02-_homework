@@ -27,6 +27,7 @@ attr_reader :k_room, :songs
  end
 
  def remove_guest_from_room(guest)
+   @k_room << guest
    @k_room.delete(guest)
  end
 

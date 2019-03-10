@@ -13,7 +13,7 @@ class RoomTest < MiniTest::Test
     @guest2 = Guests.new("E28 Lame Karaoke Night")
     @guest3 = Guests.new("E27 Silent Prayer Night")
     @guest4 = Guests.new("E27 Silent Prayer Night")
-    @group = [@guests1, @guests2, @guests3]
+    @group = [@guest1, @guest2, @guest3]
 
     @song1 = Song.new("Perfect Tonight")
     @song2 = Song.new("So Perfect Tonight")
@@ -50,7 +50,7 @@ class RoomTest < MiniTest::Test
 
   def test_mvp_requirement
     @room1.mvp_requirement(@group, @guest1, @songs)
-    assert_equal(0, @room1.k_room.count)
+    assert_equal(2, @room1.k_room.count)
     assert_equal(5, @room1.songs.count)
   end
 end
